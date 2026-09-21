@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>짤·카드 스튜디오</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>짤·카드 스튜디오</h1>
+    <button id="themeToggle" class="icon-btn" type="button" title="테마 전환">🌙</button>
+  </header>
+
+  <main class="layout">
+    <section class="stage">
+      <div class="ratio-tabs" id="ratioTabs">
+        <button class="ratio-tab" data-ratio="1:1" type="button">1:1</button>
+        <button class="ratio-tab" data-ratio="4:5" type="button">4:5</button>
+        <button class="ratio-tab" data-ratio="9:16" type="button">9:16</button>
+      </div>
+      <div class="canvas-wrap" id="canvasWrap">
+        <canvas id="previewCanvas"></canvas>
+        <div id="emptyHint" class="empty-hint">
+          여기로 이미지를 끌어다 놓거나 클릭해서 업로드하세요<br>
+          <span class="empty-hint-sub">PNG / JPEG 지원 · 지금 보이는 것은 샘플 템플릿입니다</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="side">
+      <div class="panel">
+        <h2>이미지</h2>
+        <button id="uploadBtn" class="btn" type="button">이미지 업로드</button>
+        <input type="file" id="fileInput" accept="image/png,image/jpeg" hidden>
+        <div class="row image-source-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="isOriginalCheckbox" checked>
+            본인이 직접 제작한 이미지입니다
+          </label>
+        </div>
+        <div id="sourceFields" class="source-fields" hidden>
+          <input type="text" id="sourceUrlInput" class="source-input" placeholder="출처 URL (예: https://...)">
+          <input type="text" id="sourceLicenseInput" class="source-input" placeholder="사용 허가 근거 (라이선스명 / 이용약관 / 수업 제공 등)">
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>텍스트 레이어</h2>
+        <button id="addTextBtn" class="btn" type="button">+ 텍스트 추가</button>
+        <div id="textList" class="text-list"></div>
+      </div>
+
+      <div class="panel">
+        <h2>템플릿</h2>
+        <input type="text" id="templateNameInput" class="template-name-input" placeholder="템플릿 이름">
+        <div class="row">
+          <button id="saveTemplateBtn" class="btn" type="button">새 템플릿으로 저장</button>
+          <button id="updateTemplateBtn" class="btn" type="button" hidden>현재 템플릿 업데이트</button>
+        </div>
+        <div class="row">
+          <button id="exportJsonBtn" class="btn" type="button">JSON으로 내보내기</button>
+          <button id="importJsonBtn" class="btn" type="button">JSON 가져오기</button>
+          <input type="file" id="importJsonFileInput" accept="application/json,.json" hidden>
+        </div>
+        <div id="templateList" class="template-list"></div>
+      </div>
+
+      <div class="panel">
+        <h2>내보내기</h2>
+        <button id="downloadBtn" class="btn primary" type="button">PNG 다운로드</button>
+        <button id="exportThreeBtn" class="btn" type="button">완성 이미지 3개 내보내기 (1:1 · 4:5 · 9:16)</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="toastHost" class="toast-host"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
